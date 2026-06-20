@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澳门新葡京 · 信息导览页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, 'Noto Serif SC', 'Georgia', serif;
+      background: #faf7f2;
+      color: #2d2a26;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+    /* Hero 区 */
+    .hero {
+      margin-bottom: 2.8rem;
+      padding: 2.2rem 2rem 2rem;
+      background: #f3efe9;
+      border-left: 6px solid #b4946a;
+      border-radius: 0 12px 12px 0;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #3b2f24;
+      margin-bottom: 0.4rem;
+    }
+    .hero .subhead {
+      font-size: 1.15rem;
+      color: #4d3f33;
+      border-bottom: 1px dashed #cbb59a;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: #3c342c;
+    }
+    .hero p a {
+      color: #7a5c3c;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #cbb59a;
+      font-weight: 500;
+    }
+    .hero p a:hover { color: #a67c53; }
+
+    /* 信息卡片组 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 600px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border: 1px solid #e8ddd2;
+      transition: transform 0.1s ease;
+    }
+    .card:hover { transform: translateY(-2px); }
+    .card h2 {
+      font-size: 1.25rem;
+      color: #3f2f1f;
+      border-left: 4px solid #b4946a;
+      padding-left: 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: #3f372f;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+    .card li {
+      padding: 0.2rem 0;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #b4946a;
+    }
+    .card .link-embed {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+    }
+    .card .link-embed a {
+      color: #7a5c3c;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 引用块 / 提示框 */
+    .inset-box {
+      background: #f0ebe3;
+      border-left: 5px solid #b4946a;
+      padding: 1.5rem 1.8rem;
+      margin: 2.2rem 0 2rem;
+      border-radius: 0 12px 12px 0;
+    }
+    .inset-box .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7a694b;
+      margin-bottom: 0.6rem;
+    }
+    .inset-box p {
+      margin-bottom: 0.5rem;
+    }
+    .inset-box strong {
+      color: #3f2f1f;
+    }
+
+    /* 段落自然衔接 */
+    .transition-text {
+      margin: 1.8rem 0 1.2rem;
+      font-size: 1rem;
+    }
+    .transition-text a {
+      color: #7a5c3c;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #cbb59a;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: #fff;
+      border: 1px solid #e0d4c7;
+      border-radius: 12px;
+      padding: 1.5rem 1.6rem;
+      margin-top: 2.2rem;
+    }
+    .faq-summary h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #3f2f1f;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e8ddd2;
+      padding-bottom: 0.5rem;
+    }
+    .faq-item {
+      margin-bottom: 0.7rem;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      color: #4a3a2a;
+    }
+    .faq-item .a {
+      color: #51473e;
+      padding-left: 0.6rem;
+    }
+    .faq-item .a a {
+      color: #7a5c3c;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 2.8rem;
+      font-size: 0.85rem;
+      color: #7f7163;
+      border-top: 1px solid #e0d4c7;
+      padding-top: 1.6rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>澳门新葡京</h1>
+    <div class="subhead">信息聚合 · 快速识别用途</div>
+    <p>
+      许多用户第一次接触到「澳门新葡京」时，最直接的疑问便是：这个网站提供什么服务？它的内容体系如何组织？
+      本篇介绍页从信息卡片切入，帮助你用最短的时间了解该平台的核心用途、适用人群以及常见问题。
+      若希望直接访问网站，可前往 <a href="https://page-xinpujing.com">澳门新葡京</a> 查看完整内容。
+    </p>
+  </div>
+
+  <!-- 卡片：主要用途 & 适合人群 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>主要用途</h2>
+      <ul>
+        <li>提供综合信息展示与导航服务</li>
+        <li>聚合多类目内容，便于快速检索</li>
+        <li>保持轻量级页面结构，降低理解成本</li>
+        <li>面向普通用户的内容索引与入口</li>
+      </ul>
+      <div class="link-embed">
+        更多说明可参阅 <a href="https://page-xinpujing.com">澳门新葡京</a> 内的详细分类。
+      </div>
+    </div>
+    <div class="card">
+      <h2>适合人群</h2>
+      <ul>
+        <li>希望快速定位网站功能的新访客</li>
+        <li>对信息聚合型页面有需求的浏览者</li>
+        <li>需要简洁、无冗余引导的普通用户</li>
+        <li>习惯通过卡片式内容做决策的阅读者</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 过渡段落 + 自然链接 -->
+  <p class="transition-text">
+    当你打开一个网址，最关心的事情往往是“它到底能做什么”。<strong>澳门新葡京</strong>的页面设计正是基于这一逻辑——将核心功能通过卡片、引用和条目式说明拆解，让信息一目了然。
+    如果你已经在使用 <a href="https://page-xinpujing.com">澳门新葡京</a>，也会发现其中的内容更新节奏稳定，分类逻辑清晰。
+  </p>
+
+  <!-- 引用框：提示/补充 -->
+  <div class="inset-box">
+    <div class="label">📌 使用提示</div>
+    <p><strong>关于分类浏览：</strong> 网站首页通常以模块化方式呈现，将不同主题的内容区隔开来，避免信息过载。你可以根据卡片标题快速跳转到感兴趣的部分。</p>
+    <p><strong>关于内容可信度：</strong> 所有公开信息均以客观、克制的口吻撰写，不涉及诱导性表述。建议结合自身判断使用页面提供的指引。</p>
+  </div>
+
+  <!-- 额外卡片：场景化应用 (丰富差异化) -->
+  <div style="display: grid; grid-template-columns: 1fr; gap:1.2rem; margin: 1.2rem 0;">
+    <div class="card" style="grid-column: 1 / -1;">
+      <h2>典型使用场景</h2>
+      <p>
+        新用户打开页面后，首先看到的是高度概括的标题与说明段落，随后可以借助卡片组快速判断该网站是否匹配个人需求。
+        例如，当你想确认一个信息聚合平台是否包含你关心的领域时，可以直接浏览“主要用途”卡片中的列表；
+        如果你更关注用户群体是否与你相似，则“适合人群”卡片能够提供参考。
+        整个过程可以在 30 秒内完成，这也是卡片式信息架构的初衷。
+      </p>
+      <div style="margin-top:0.6rem; font-size:0.95rem;">
+        想了解更多场景？前往 <a href="https://page-xinpujing.com">澳门新葡京</a> 亲自体验。
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h3>常见问题摘要</h3>
+    <div class="faq-item">
+      <span class="q">Q：澳门新葡京 是否需要注册才能浏览？</span>
+      <div class="a">A：大部分内容可直接访问，无需登录。具体页面可能因功能而异，以实际页面提示为准。</div>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：页面中的卡片内容会定期更新吗？</span>
+      <div class="a">A：信息架构会依据内容调整，建议直接通过 <a href="https://page-xinpujing.com">澳门新葡京</a> 获取最新版本。</div>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：如何快速找到我感兴趣的分类？</span>
+      <div class="a">A：首页的卡片和导航块已经做了初步归类，你也可以使用站内搜索（如有）进一步缩小范围。</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    本页仅为信息介绍，不构成任何引导或商业承诺。具体内容以原网站为准。
+  </div>
+</div>
+</body>
+</html>
